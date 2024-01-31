@@ -6,7 +6,7 @@
 
 ![desktop-wallpaper-mauro-luis-on-lucario-mega-and-riolu-riolu-and-lucario-thumbnail](https://user-images.githubusercontent.com/11424277/226479062-5537d742-39dc-4598-97bb-e779a024e8aa.jpg)
 
-## Official Nebula API
+## Official ChatControlCenter API
 - <a href="https://api.nebula.squirrel-network.online">Docs</a>
 - <a href="https://github.com/ChatControlCenter/api">Source</a>
 
@@ -23,4 +23,4 @@
 
 # License 📄
 
-Please read the <a href="https://github.com/Squirrel-Network/Nebula10/blob/master/LICENSE">LICENSE</a> provided in this rep
+Please read the <a href="https://github.com/ChatControlCenter/chatcontrolcente/blob/master/LICENSE">LICENSE</a> provided in this rep
