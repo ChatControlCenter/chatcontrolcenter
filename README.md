@@ -8,7 +8,7 @@
 
 ## Official Nebula API
 - <a href="https://api.nebula.squirrel-network.online">Docs</a>
-- <a href="https://github.com/Squirrel-Network/api_nebula">Source</a>
+- <a href="https://github.com/ChatControlCenter/api">Source</a>
 
 ## Official Resources
 - <a href="https://squirrel-network.online/knowhere/">Knowhere (Blacklist Search)</a>
