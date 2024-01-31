@@ -23,4 +23,4 @@
 
 # License 📄
 
-Please read the <a href="https://github.com/ChatControlCenter/chatcontrolcente/blob/master/LICENSE">LICENSE</a> provided in this rep
+Please read the <a href="https://github.com/ChatControlCenter/chatcontrolcenter/blob/master/LICENSE">LICENSE</a> provided in this rep
