@@ -5,7 +5,7 @@
 ![2x1_AnimalCrossingHub_image1600w](https://github.com/ChatControlCenter/chatcontrolcenter/assets/11424277/099b0a35-b608-403c-9b21-6a3b372f3ea0)
 
 ## Official ChatControlCenter API
-- <a href="https://api.nebula.squirrel-network.online">Docs</a>
+- <a href="https://api.chatcontrolcenter.it">Docs</a>
 - <a href="https://github.com/ChatControlCenter/api">Source</a>
 
 ## Official Resources
