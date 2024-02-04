@@ -8,12 +8,6 @@
 - <a href="https://api.chatcontrolcenter.it">Docs</a>
 - <a href="https://github.com/ChatControlCenter/api">Source</a>
 
-## Official Resources
-- <a href="https://squirrel-network.online/knowhere/">Knowhere (Blacklist Search)</a>
-- <a href="https://github.com/Squirrel-Network/Nebula-webapp-frontend">WebApp</a>
-
-
-
 # Credits
 - Big thanks to <a href="https://github.com/bytecntrl">bytecntrl</a>
 - Thanks to <a href="https://github.com/TheLonelyAdventurer">TheLonelyAdventurer</a>
