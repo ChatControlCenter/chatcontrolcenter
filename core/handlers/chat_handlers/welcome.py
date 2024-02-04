@@ -67,20 +67,20 @@ async def welcome_bot(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 
     buttons = [
         InlineKeyboardButton(
-            text="{GLOBE_WITH_MERIDIANS} SquirrelNetwork".format_map(Text()),
-            url="https://squirrel-network.online",
+            text="{GLOBE_WITH_MERIDIANS} Website".format_map(Text()),
+            url="https://chatcontrolcenter.it",
         ),
         InlineKeyboardButton(
             text="{LOUDSPEAKER} Bot_Logs".format_map(Text()),
-            url="https://t.me/nebulalogs",
+            url="https://t.me/chatcontrolcenter_logs",
         ),
         InlineKeyboardButton(
             text="{NEWSPAPER} Bot_News".format_map(Text()),
-            url="https://t.me/nebulanewsbot",
+            url="https://t.me/chatcontrolcenternews",
         ),
         InlineKeyboardButton(
             text="{LARGE_BLUE_DIAMOND} Source Code".format_map(Text()),
-            url="https://github.com/Squirrel-Network/nebula10",
+            url="https://github.com/ChatControlCenter/chatcontrolcenter",
         ),
         InlineKeyboardButton(
             text="{BUSTS_IN_SILHOUETTE} Support".format_map(Text()),
