@@ -84,7 +84,7 @@ async def welcome_bot(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
         ),
         InlineKeyboardButton(
             text="{BUSTS_IN_SILHOUETTE} Support".format_map(Text()),
-            url="https://t.me/nebulabot_support",
+            url="https://t.me/chatcontrolcenter_support",
         ),
     ]
     params = {

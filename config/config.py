@@ -19,14 +19,14 @@ class Config(BaseSettings, case_sensitive=True):
     BOT_TOKEN: str = Field(alias="TOKEN")
     DEBUG: bool = False
     DEFAULT_LANGUAGE: str = "EN"
-    VERSION: str = "10.1.8"
-    VERSION_NAME: str = "Lucario"
-    REPO: str = "https://github.com/Squirrel-Network/nebula10"
+    VERSION: str = "1.0.0"
+    VERSION_NAME: str = "A.C."
+    REPO: str = "https://github.com/ChatControlCenter"
     MAX_ELEMENTS_PAGE: int = 5
 
     # Webapp
     WEBAPP_URL: str = "https://webapp.nebula.squirrel-network.online"
-    INT_WEBSRV_URL: str = "https://nebula.squirrel-network.online"
+    INT_WEBSRV_URL: str = "https://chatcontrolcenter.it"
     WEBAPP_PORT: int = 4046
     TOKEN_SECRET: str = Field(alias="TOKEN_SECRET")
     JWT_TOKEN_EXPIRES: int = 300
@@ -36,7 +36,7 @@ class Config(BaseSettings, case_sensitive=True):
         "Welcome {USERNAME} to the {CHAT} group", alias="TG_DEFAULT_WELCOME"
     )
     DEFAULT_RULES: str = Field(
-        "https://github.com/Squirrel-Network/GroupRules", alias="TG_DEFAULT_RULES"
+        "Behave with courtesy and respect towards other users", alias="TG_DEFAULT_RULES"
     )
     DEFAULT_LOG_CHANNEL: int = Field(alias="TG_DEFAULT_LOG_CHANNEL")
     DEFAULT_STAFF_GROUP: int = Field(alias="TG_DEFAULT_STAFF_GROUP")
