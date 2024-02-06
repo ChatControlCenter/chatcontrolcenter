@@ -21,23 +21,20 @@ async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     buttons = [
         InlineKeyboardButton(
             text="📖 Command List",
-            url="https://github.com/Squirrel-Network/nebula8/wiki/Command-List",
+            url="https://chatcontrolcenter.it",
         ),
         InlineKeyboardButton(
-            text="🆓 Source", url="https://github.com/Squirrel-Network/nebula10"
+            text="🆓 Source", url="https://github.com/ChatControlCenter/chatcontrolcenter"
         ),
-        InlineKeyboardButton("🔔 Logs Channel", url="https://t.me/nebulalogs"),
-        InlineKeyboardButton("📣 News Channel", url="https://t.me/nebulanewsbot"),
-        InlineKeyboardButton(
-            text="🚷 BlackList", url="https://squirrel-network.online/knowhere"
-        ),
+        InlineKeyboardButton("🔔 Logs Channel", url="https://t.me/chatcontrolcenter_logs"),
+        InlineKeyboardButton("📣 News Channel", url="https://t.me/chatcontrolcenternews"),
+        #TODO Create Page Blacklist
+        #InlineKeyboardButton(
+            #text="🚷 BlackList", url="https://squirrel-network.online/knowhere"
+        #),
         InlineKeyboardButton(
             text="📑 API Docs",
-            url="https://api.nebula.squirrel-network.online/apidocs",
-        ),
-        InlineKeyboardButton("🌐 Network SN", url="https://t.me/squirrelnetwork"),
-        InlineKeyboardButton(
-            "🛠 Dashboard", url="https://nebula.squirrel-network.online"
+            url="https://api.chatcontrolcenter.it",
         ),
         InlineKeyboardButton("Close 🗑", callback_data="close"),
     ]

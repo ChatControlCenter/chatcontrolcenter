@@ -17,15 +17,12 @@ from languages import get_lang
 START_BUTTONS = (
     (
         "Commands",
-        "https://github.com/Squirrel-Network/nebula8/wiki/Command-List",
+        "https://chatcontrolcenter.it/#",
     ),
-    ("Dashboard", "https://nebula.squirrel-network.online"),
-    ("Api", "https://api.nebula.squirrel-network.online"),
-    ("Knowhere", "https://squirrel-network.online/knowhere"),
-    ("News", "https://t.me/nebulanewsbot"),
-    ("Logs", "https://t.me/nebulalogs"),
-    ("SquirrelNetwork", "https://t.me/squirrelnetwork"),
-    ("👥 Add me to a Group", "https://t.me/thenebulabot?startgroup=start"),
+    ("Api", "https://api.chatcontrolcenter.it"),
+    ("News", "https://t.me/chatcontrolcenternews"),
+    ("Logs", "https://t.me/chatcontrolcenter_logs"),
+    ("👥 Add me to a Group", "https://t.me/chatcontrolcenter_bot?startgroup=start"),
 )
 
 

@@ -21,7 +21,7 @@ class Groups(Model):
     log_channel = fields.BigIntField()
     group_photo = fields.CharField(
         255,
-        default="https://nebula.squirrel-network.online/static/group_photo/default.jpg",
+        default="https://chatcontrolcenter.it/static/group_photo/default.jpg",
     )
     total_users = fields.IntField(default=0)
     ban_message = fields.TextField(

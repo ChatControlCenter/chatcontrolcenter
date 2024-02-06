@@ -21,7 +21,7 @@ class Config(BaseSettings, case_sensitive=True):
     DEFAULT_LANGUAGE: str = "EN"
     VERSION: str = "1.0.0"
     VERSION_NAME: str = "A.C."
-    REPO: str = "https://github.com/ChatControlCenter"
+    REPO: str = "https://github.com/ChatControlCenter/chatcontrolcenter"
     MAX_ELEMENTS_PAGE: int = 5
 
     # Webapp
