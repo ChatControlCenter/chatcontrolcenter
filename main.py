@@ -32,8 +32,10 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 10:
     )
     quit(1)
 
-
-FMT = "<green>[{time}]</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+FMT = (
+    "<green>[{time}]</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:"
+    "<cyan>{line}</cyan> - <level>{message}</level>"
+)
 HANDLER_OFFSET = 2
 
 
@@ -109,7 +111,7 @@ async def main() -> None:
     Session.owner_ids = await get_owner_list()
 
     # Start the bot.
-    # Create the Application and pass it your bot's token.
+    # Create the Application and pass it your bots token.
     application = Application.builder().token(conf.BOT_TOKEN).build()
     Session.bot = application.bot
 
