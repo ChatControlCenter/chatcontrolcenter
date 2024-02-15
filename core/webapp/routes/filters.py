@@ -10,4 +10,4 @@ filters = Blueprint("filters", __name__, url_prefix="/filters")
 
 @filters.get("/")
 async def index():
-    return await render_template("filters/index.html")
+    return await render_template("filters.html")
