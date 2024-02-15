@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>ChatControlCenter - Filters</title>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/static/css/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="position-fixed bg-black bg-opacity-50 w-100 h-100 z-3" id="loadingOverlay">
+    <div class="d-flex w-100 h-100 align-items-center justify-content-center flex-wrap">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form name='save-filters'>
+        <details class="group-info">
+			<summary class="mb-1">Information of the group</summary>
+
+			<figure class="card">
+				<img
+					class="card-img-top"
+					src="GROUP_PHOTO"
+					alt="Picture of the group: GROUP_NAME"
+					width="50%"
+				/>
+
+				<figcaption class="card-body">
+					<span class="h2 card-text">
+						GROUP_NAME
+					</span>
+
+					<hr />
+
+					<dl class="card-text">
+						<dt>Chat Id</dt>
+						<dd>
+							GROUP_ID
+							<button
+			                    class="btn btn-outline-primary btn-copy btn-copy-initial"
+			                    type="button"
+		                    >
+			                    <i class="bi bi-clipboard"></i>
+		                </button>
+						</dd>
+
+						<dt>Language</dt>
+						<dd>GROUP_LANGUAGE</dd>
+
+						<dt>Total users</dt>
+						<dd>GROUP_TOTAL_USER</dd>
+
+						<dt>Total messages</dt>
+						<dd>GROUP_TOTAL_MESSAGES</dd>
+
+						<dt>Max Warn</dt>
+						<dd>GROUP_MAX_WARN</dd>
+					</dl>
+				</figcaption>
+			</figure>
+		</details>
+    </form>
+</div>
+
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

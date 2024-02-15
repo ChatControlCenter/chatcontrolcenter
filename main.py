@@ -136,7 +136,8 @@ async def main() -> None:
         template_folder="core/webapp/templates",
         static_folder="core/webapp/static",
     )
-    app.register_blueprint(routes.home.home)
+    app.register_blueprint(routes.filters)
+    app.register_blueprint(routes.home)
 
     # Scheduler
     start_scheduler()
