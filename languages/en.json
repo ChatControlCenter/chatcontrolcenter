@@ -27,7 +27,7 @@
     "SERVER_STATUS_NETWORK": "{GEAR} ==== NETWORK INFO ==== {GEAR}\nTotal Bytes Sent: <code>{BYTES_SENT}</code>\nTotal Bytes Received: <code>{BYTES_RECV}</code>\nIt's running since <b>{RUNNING}</b>",
     "SERVER_STATUS_SYSTEM": "<b>Server Status:</b>\n\n{GEAR} ==== SYSTEM INFO ==== {GEAR}\nSystem: <code>{SYSTEM}</code>\nNode Name: <code>{NODE}</code>\nRelease: <code>{RELEASE}</code>\nVersion: <code>{VERSION}</code>\nMachine: <code>{MACHINE}</code>\n\n",
     "START_COMMAND": "Hi, my name is {NAME} and I am a tool for managing groups with many special functions to be discovered and I am Open Source! If you want to see my source type: /source If you need help, type /help",
-    "SUPERBAN": "{NO_PEDESTRIANS} You got Super Banned <a href=\"tg://user?id={ID}\">{ID}</a> via TelegramID\n\n{SCROLL} For the following reason: <b>{REASON}</b>\n\n{RIGHT_ARROW} Go to: https://api.chatcontrolcenter.it/v2/users/{ID} to search for blacklisted users",
+    "SUPERBAN": "{NO_PEDESTRIANS} You got Super Banned <a href=\"tg://user?id={ID}\">{ID}</a> via TelegramID\n\n{SCROLL} For the following reason: <b>{REASON}</b>\n\n{RIGHT_ARROW} Go to: https://api.chatcontrolcenter.it/v2/blacklist/{ID} to search for blacklisted users",
     "SUPERBAN_ALREADY_EXIST": "The user <code>{ID}</code> is already present in the database",
     "SUPERBAN_ERROR": "Superban cannot be completed. The user may have already been blacklisted or is on the whitelist.",
     "SUPERBAN_ERROR_ID": "Attention you can not superbanned without entering an valid TelegramID!",
