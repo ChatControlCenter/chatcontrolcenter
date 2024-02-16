@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Filters{% endblock %}
+
+{% block body %}
+<form name='save-filters'>
+	<details class="group-info">
+		<summary class="mb-1">Information of the group</summary>
+
+		<figure class="card">
+			<img
+				class="card-img-top"
+				src="GROUP_PHOTO"
+				alt="Picture of the group: GROUP_NAME"
+				width="50%"
+			/>
+
+			<figcaption class="card-body">
+				<span class="h2 card-text">
+					GROUP_NAME
+				</span>
+
+				<hr />
+
+				<dl class="card-text">
+					<dt>Chat Id</dt>
+					<dd>
+						GROUP_ID
+						<button
+							class="btn btn-outline-primary btn-copy btn-copy-initial"
+							type="button"
+						>
+							<i class="bi bi-clipboard"></i>
+					</button>
+					</dd>
+
+					<dt>Language</dt>
+					<dd>GROUP_LANGUAGE</dd>
+
+					<dt>Total users</dt>
+					<dd>GROUP_TOTAL_USER</dd>
+
+					<dt>Total messages</dt>
+					<dd>GROUP_TOTAL_MESSAGES</dd>
+
+					<dt>Max Warn</dt>
+					<dd>GROUP_MAX_WARN</dd>
+				</dl>
+			</figcaption>
+		</figure>
+	</details>
+</form>
+{% endblock %}

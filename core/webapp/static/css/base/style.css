@@ -1,0 +1,92 @@
+:root {
+	--transtion-duration: 500ms;
+}
+
+body {
+	--bs-body-bg: var(--tg-theme-bg-color);
+	--bs-body-color: var(--tg-theme-text-color);
+	--bs-secondary-color: var(--tg-theme-button-text-color);
+}
+
+.btn-primary {
+	--bs-btn-color: var(--tg-theme-button-text-color);
+	--bs-btn-bg: var(--tg-theme-button-color);
+	--bs-btn-border-color: var(--tg-theme-button-color);
+	--bs-btn-hover-color: var(--tg-theme-button-color);
+	--bs-btn-hover-bg: var(--tg-theme-secondary-bg-color);
+	--bs-btn-hover-border-color: var(--tg-theme-hint-color);
+	--bs-btn-active-color: var(--tg-theme-button-text-color);
+	--bs-btn-active-bg: var(--tg-theme-secondary-bg-color);
+	--bs-btn-active-border-color: var(--tg-theme-button-text-color);
+	--bs-btn-disabled-color: var(--tg-theme-button-text-color);
+	--bs-btn-disabled-bg: transparent;
+	--bs-btn-disabled-border-color: var(--tg-theme-secondary-bg-color);
+}
+
+.btn-outline-primary {
+	--bs-btn-color: var(--tg-theme-button-color);
+	--bs-btn-border-color: var(--tg-theme-button-color);
+	--bs-btn-hover-color: var(--tg-theme-button-text-color);
+	--bs-btn-hover-bg: var(--tg-theme-button-color);
+	--bs-btn-hover-border-color: var(--tg-theme-button-color);
+	--bs-btn-focus-shadow-rgb: 13, 110, 253;
+	--bs-btn-active-color: var(--tg-theme-button-text-color);
+	--bs-btn-active-bg: var(--tg-theme-button-color);
+	--bs-btn-active-border-color: var(--tg-theme-button-color);
+	--bs-btn-disabled-color: var(--tg-theme-button-color);
+	--bs-btn-disabled-border-color: var(--tg-theme-button-color);
+}
+
+.table {
+	--bs-border-width: 0;
+	--bs-table-bg: var(--tg-theme-secondary-bg-color);
+	--bs-table-striped-bg: rgba(0, 0, 0, 0.07);
+	--bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+details.group-info summary::marker {
+	font-size: 1.5em;
+	color: var(--tg-theme-button-color);
+	transition: var(--transtion-duration);
+}
+
+details.group-info figure.card {
+	--bs-card-bg: var(--tg-theme-secondary-bg-color);
+}
+
+details.group-info dd {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: var(--tg-theme-bg-color);
+	padding: 0.5rem;
+	margin-top: 1rem;
+	border-radius: var(--bs-card-border-radius);
+	color: var(--tg-theme-button-color);
+	font-family: monospace;
+	user-select: text;
+}
+
+details.group-info dd::before {
+	position: absolute;
+	left: 0.3em;
+	top: -1em;
+	content: "▲";
+	font-size: 2em;
+	display: inline-block;
+	color: var(--tg-theme-bg-color);
+	background-color: transparent;
+}
+
+details.group-info dd > button.btn-copy {
+	margin-left: auto;
+}
+
+.form-check-input:checked {
+	background-color: var(--tg-theme-button-color);
+	border-color: var(--tg-theme-button-color);
+}
+
+.form-text {
+	--bs-secondary-color: var(--tg-theme-hint-color);
+}

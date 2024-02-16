@@ -5,9 +5,9 @@
 
 from quart import Blueprint, render_template
 
-home = Blueprint("home", __name__)
+filters = Blueprint("filters", __name__, url_prefix="/filters")
 
 
-@home.route("/", methods=["GET"])
+@filters.get("/")
 async def index():
-    return await render_template("index.html")
+    return await render_template("filters.html")
