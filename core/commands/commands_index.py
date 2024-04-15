@@ -48,7 +48,7 @@ def admin_command(application: Application):
     application.add_handler(MessageHandler(None, admin.pin.get_pinned))
     application.add_handler(MessageHandler(None, admin.pin.unpin))
 
-
+#Ow
 def owner_command(application: Application):
     application.add_handler(MessageHandler(None, owner.test.command_test))
     application.add_handler(MessageHandler(None, owner.server.init))
@@ -56,7 +56,6 @@ def owner_command(application: Application):
     application.add_handler(MessageHandler(None, owner.superban.multi_superban))
     application.add_handler(MessageHandler(None, owner.superban.remove_superban_via_id))
     application.add_handler(MessageHandler(None, owner.add_owner.init))
-    application.add_handler(MessageHandler(None, owner.add_community.init))
 
 
 def user_command(application: Application):
