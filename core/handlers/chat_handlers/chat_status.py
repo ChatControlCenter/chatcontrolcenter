@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 import html
 
@@ -42,7 +42,7 @@ async def new_chat_photo_handler(
     folder = "static"
 
     await newfile.download_to_drive(f"core/webapp/{folder}/group_photo/{chat.id}.jpg")
-    url = f"{Session.config.WEBAPP_URL}/{folder}/group_photo/{chat.id}.jpg"
+    url = f"{Session.config.INT_WEBSRV_URL}/{folder}/group_photo/{chat.id}.jpg"
 
     await Groups.filter(id_group=chat.id).update(group_photo=url)
     await telegram_debug_channel(

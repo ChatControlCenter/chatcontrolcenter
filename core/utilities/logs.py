@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 from loguru import logger
 from telegram.ext import ContextTypes

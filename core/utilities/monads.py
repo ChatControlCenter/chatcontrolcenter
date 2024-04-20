@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 # Schrödinger's cat but in Python
 class Optional:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 __all__ = ("settings_welcome",)
 

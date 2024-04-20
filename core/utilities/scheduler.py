@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from core.utilities import constants

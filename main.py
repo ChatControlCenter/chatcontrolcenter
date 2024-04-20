@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 import sys
 import logging
@@ -130,7 +130,9 @@ async def main() -> None:
 
     await separate_handlers(application)
 
-    # Webapp
+    #################################
+    ########## WEBAPP ##############
+    ################################
     app = Quart(
         __name__,
         template_folder="core/webapp/templates",

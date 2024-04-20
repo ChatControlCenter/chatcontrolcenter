@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 from telegram.ext import ContextTypes
 
@@ -24,6 +24,7 @@ from core.utilities.text import Text
     & filters.check_status("set_welcome_text")
     & filters.text,
 )
+#Set Welcome
 async def set_welcome_text_status(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -33,13 +34,14 @@ async def set_welcome_text_status(
 
     await context.bot.delete_message(update.effective_chat.id, data["message_id"])
 
+    #Check is Valid HTML
     if not validate_html(update.effective_message.text):
         return await message(
             update,
             context,
             lang["SETTINGS"]["WELCOME"]["SETTINGS_WELCOME_TEXT_INVALID_HTML"],
         )
-
+    #Update into Database
     await Groups.filter(id_group=update.effective_chat.id).update(
         welcome_text=update.effective_message.text
     )

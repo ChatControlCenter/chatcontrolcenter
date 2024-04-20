@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright SquirrelNetwork
+# Copyright ChatControlCenter Team
 
 from pydantic import Field
 from pydantic_settings import BaseSettings
@@ -25,7 +25,8 @@ class Config(BaseSettings, case_sensitive=True):
     MAX_ELEMENTS_PAGE: int = 5
 
     # Webapp
-    WEBAPP_URL: str = "https://webapp.nebula.squirrel-network.online"
+    #old url WEBAPP_URL: str = "https://webapp.nebula.squirrel-network.online"
+    WEBAPP_URL: str = "https://chatcontrolcenter.it"
     INT_WEBSRV_URL: str = "https://chatcontrolcenter.it"
     WEBAPP_PORT: int = 4046
     TOKEN_SECRET: str = Field(alias="TOKEN_SECRET")
