@@ -6,6 +6,7 @@
 from quart import Blueprint, render_template, request
 from core.database.models import Groups
 from core.database.models import GroupsFilters
+from core.utilities.token_jwt import decode_jwt
 
 filters = Blueprint("filters", __name__, url_prefix="/filters")
 
@@ -16,6 +17,11 @@ async def index():
     token = request.args.get('token')
     chat_id = request.args.get('chat_id')
     user_id = request.args.get('user_id')
+
+    # Decode and validate the token
+    valid_token, token_payload = decode_jwt(token)
+    if not valid_token:
+        return "Invalid token or token expired"
 
     # Database Variables
     data_filters = await GroupsFilters.get(chat_id=chat_id)
