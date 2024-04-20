@@ -41,7 +41,7 @@ async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
                     InlineKeyboardButton(
                         "Open Filters Settings",
                         web_app=WebAppInfo(
-                            f"{Session.config.WEBAPP_URL}/filters?token={encode_jwt()}&chat_id={params['chat_id']}&user_id={update.effective_user.id}"
+                            f"{Session.config.WEBAPP_URL}/filters/{encode_jwt()}/{params['chat_id']}"
                         ),
                     )
                 ]

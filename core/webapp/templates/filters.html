@@ -3,52 +3,69 @@
 {% block title %}Filters{% endblock %}
 
 {% block body %}
-<form name='save-filters'>
-	<details class="group-info">
-		<summary class="mb-1">Information of the group</summary>
+<form name='save-filters' method="POST">
+    <details class="group-info">
+        <summary class="mb-1">Information of the group</summary>
 
-		<figure class="card">
-			<img
-				class="card-img-top"
-				src="{{ group_data['group_photo'] }}"
-				alt="Picture of the group: {{ group_data['name'] }}"
-				width="50%"
-			/>
+        <figure class="card">
+            <img
+                class="card-img-top"
+                src="{{ group_data['group_photo'] }}"
+                alt="Picture of the group: {{ group_data['name'] }}"
+                width="50%"
+            />
 
-			<figcaption class="card-body">
-				<span class="h2 card-text">
+            <figcaption class="card-body">
+                <span class="h2 card-text">
                     {{ group_data['name'] }}
-				</span>
+                </span>
 
-				<hr />
+                <hr />
 
-				<dl class="card-text">
-					<dt>Chat Id</dt>
-					<dd>
-						{{ group_data['id'] }}
-						<button
-							class="btn btn-outline-primary btn-copy btn-copy-initial"
-							type="button"
-						>
-							<i class="bi bi-clipboard"></i>
-					</button>
-					</dd>
+                <dl class="card-text">
+                    <dt>Chat Id</dt>
+                    <dd>
+                        {{ group_data['id'] }}
+                        <button
+                            class="btn btn-outline-primary btn-copy btn-copy-initial"
+                            type="button"
+                        >
+                            <i class="bi bi-clipboard"></i>
+                        </button>
+                    </dd>
 
-					<dt>Language</dt>
-					<dd>{{ group_data['language'] }}</dd>
+                    <dt>Language</dt>
+                    <dd>{{ group_data['language'] }}</dd>
 
-					<dt>Total users</dt>
-					<dd>{{ group_data['total_users'] }}</dd>
+                    <dt>Total users</dt>
+                    <dd>{{ group_data['total_users'] }}</dd>
 
-					<!--<dt>Total messages</dt>
-					<dd>GROUP_TOTAL_MESSAGES</dd>-->
+                    <dt>Max Warn</dt>
+                    <dd>{{ group_data['max_warn'] }}</dd>
+                </dl>
 
-					<dt>Max Warn</dt>
-					<dd>{{ group_data['max_warn'] }}</dd>
-				</dl>
-                {{ group_filters }}
-			</figcaption>
-		</figure>
-	</details>
+                <!-- switch -->
+        <dl class="card-text">
+        <dt>Filters</dt>
+        {% for key, value in group_filters.items() %}
+            <dd>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" name="filters[{{ key }}]" type="checkbox" {% if value %}checked{% endif %}>
+                    <label class="form-check-label">{{ key }}</label>
+                </div>
+            </dd>
+        {% endfor %}
+        </dl>
+
+
+                <!-- Aggiungi il pulsante Salva -->
+                <button type="submit" class="btn btn-primary" name="save-button">Salva</button>
+            </figcaption>
+        </figure>
+    </details>
 </form>
+
+
+
+
 {% endblock %}
