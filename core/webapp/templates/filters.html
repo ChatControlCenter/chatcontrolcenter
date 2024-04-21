@@ -3,8 +3,8 @@
 {% block title %}Filters{% endblock %}
 
 {% block body %}
-<form name='save-filters' method="POST">
-    <details class="group-info">
+<form name='save-filters'>
+    <details class="group-info" open>
         <summary class="mb-1">Information of the group</summary>
 
         <figure class="card">
@@ -25,8 +25,9 @@
                 <dl class="card-text">
                     <dt>Chat Id</dt>
                     <dd>
-                        {{ group_data['id'] }}
+                        <span id="chat-id">{{ group_data['id'] }}</span>
                         <button
+                            id="copy-chat-id"
                             class="btn btn-outline-primary btn-copy btn-copy-initial"
                             type="button"
                         >
@@ -45,27 +46,21 @@
                 </dl>
 
                 <!-- switch -->
-        <dl class="card-text">
-        <dt>Filters</dt>
-        {% for key, value in group_filters.items() %}
-            <dd>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" name="{{key}}" type="checkbox" {% if value %}checked{% endif %}>
-                    <label class="form-check-label">{{ key }}</label>
-                </div>
-            </dd>
-        {% endfor %}
-        </dl>
-
-
-                <!-- Aggiungi il pulsante Salva -->
-                <button type="submit" class="btn btn-primary" name="save-button">Salva</button>
+                <dl class="card-text">
+                    <dt>Filters</dt>
+                    {% for key, value in group_filters.items() %}
+                    <dd>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" name="{{key}}" type="checkbox" {% if value %}checked{% endif %}>
+                            <label class="form-check-label">{{ key }}</label>
+                        </div>
+                    </dd>
+                    {% endfor %}
+                </dl>
             </figcaption>
         </figure>
     </details>
 </form>
-
-
 
 
 {% endblock %}

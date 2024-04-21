@@ -193,3 +193,15 @@ def validate_html(msg: str) -> bool:
             i += 1
 
     return not bool(tags)
+
+
+async def update_filters(chat_id, filters_selected):
+    # Recupera il record dei filtri dal database
+    filters_record = await GroupsFilters.get(chat_id=chat_id)
+
+    # Itera attraverso i filtri selezionati e aggiorna i valori nel record dei filtri
+    for key, value in filters_selected.items():
+        setattr(filters_record, key, value)
+
+    # Salva le modifiche nel database
+    await filters_record.save()

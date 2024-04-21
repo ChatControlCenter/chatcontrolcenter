@@ -67,17 +67,6 @@ details.group-info dd {
 	user-select: text;
 }
 
-details.group-info dd::before {
-	position: absolute;
-	left: 0.3em;
-	top: -1em;
-	content: "▲";
-	font-size: 2em;
-	display: inline-block;
-	color: var(--tg-theme-bg-color);
-	background-color: transparent;
-}
-
 details.group-info dd > button.btn-copy {
 	margin-left: auto;
 }

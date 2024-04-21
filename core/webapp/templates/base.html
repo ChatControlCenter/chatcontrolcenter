@@ -4,13 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>ChatControlCenter - {% block title %}{% endblock %}</title>
 
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>ChatControlCenter - {% block title %}{% endblock %}</title>
 
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='css/bootstrap-icons.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/base/style.css') }}" rel="stylesheet">
+
+    <!-- ### Telegram Javascript section -->
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- /// Telegram Javascript section -->
+
+    <script id="server-response" type="application/json">
+    {
+        "form-save-result":
+        {% if message %}
+        {
+            "message": "{{ message }}"
+        }
+        {% else %}
+        null
+        {% endif %}
+    }
+    </script>
 
     {% block head %}{% endblock %}
 </head>
@@ -24,10 +42,10 @@
 </div>
 
 <div class="container-fluid">
+{{ message }}
+
     {% block body %}{% endblock %}
 </div>
 
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
