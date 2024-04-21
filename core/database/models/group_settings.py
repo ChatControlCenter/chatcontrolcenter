@@ -50,6 +50,7 @@ class GroupSettings(Model):
             "set_cirillic_filter": self.set_cirillic_filter,
             "set_chinese_filter": self.set_chinese_filter,
             "zoophile_filter": self.zoophile_filter,
+            "spoiler_block": self.spoiler_block
         }
 
     class Meta:

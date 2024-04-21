@@ -183,6 +183,7 @@ class ChatBlockBlocksButtonsKeyboardTexts(typing.TypedDict):
     SET_CIRILLIC_FILTER: str
     SET_CHINESE_FILTER: str
     ZOOPHILE_FILTER: str
+    BLOCK_SPOILER: str
 
 
 class ChatBlockKeyboardTexts(typing.TypedDict):
