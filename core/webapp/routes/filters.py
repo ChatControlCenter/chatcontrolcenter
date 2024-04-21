@@ -16,7 +16,7 @@ async def update_filters(chat_id, filters_selected):
 
     # Itera attraverso i filtri selezionati e aggiorna i valori nel record dei filtri
     for key, value in filters_selected.items():
-        setattr(filters_record, f"{key}_filter", value)
+        setattr(filters_record, key, value)
 
     # Salva le modifiche nel database
     await filters_record.save()
@@ -26,14 +26,12 @@ async def update_filters(chat_id, filters_selected):
 async def index(token,chat):
     if request.method == "POST":
         form = await request.form
-        filters_selected = {key: bool(form.get(key)) for key in form.keys() if key.startswith("filters[")}
+        filters_selected = {k: bool(v) for k, v in form.items() if k.endswith("_filter")}
 
         # Aggiorna i filtri nel database
         await update_filters(chat, filters_selected)
 
         return filters_selected
-        # Aggiorna i filtri nel database
-        #await update_filters(chat, filters_selected)
 
     else:
         # Decode and validate the token
@@ -57,17 +55,16 @@ async def index(token,chat):
 
         # Grop Filters Transform into Dict
         filters_dict = {
-            "exe": data_filters.exe_filter,
-            "gif": data_filters.gif_filter,
-            "jpg": data_filters.jpg_filter,
-            "docx": data_filters.docx_filter,
-            "apk": data_filters.apk_filter,
-            "compress": data_filters.compress_filter
+            "exe_filter": data_filters.exe_filter,
+            "gif_filter": data_filters.gif_filter,
+            "jpg_filter": data_filters.jpg_filter,
+            "docx_filter": data_filters.docx_filter,
+            "apk_filter": data_filters.apk_filter,
+            "compress_filter": data_filters.compress_filter
         }
 
         # Test Print
         print("Token:", token)
         print("Chat ID:", chat)
-        #print("User ID:", user_id)
 
         return await render_template("filters.html", group_data=data_group, group_filters=filters_dict)

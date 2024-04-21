@@ -50,7 +50,7 @@
         {% for key, value in group_filters.items() %}
             <dd>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" name="filters[{{ key }}]" type="checkbox" {% if value %}checked{% endif %}>
+                    <input class="form-check-input" name="{{key}}" type="checkbox" {% if value %}checked{% endif %}>
                     <label class="form-check-label">{{ key }}</label>
                 </div>
             </dd>
