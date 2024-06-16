@@ -4,7 +4,6 @@
 # Copyright ChatControlCenter Team
 
 __all__ = (
-    "Community",
     "CustomCommands",
     "CustomHandler",
     "GroupSettings",
@@ -23,7 +22,6 @@ __all__ = (
     "WhitelistTable",
 )
 
-from .community import Community
 from .custom_commands import CustomCommands
 from .custom_handler import CustomHandler
 from .group_settings import GroupSettings

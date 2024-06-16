@@ -29,6 +29,7 @@ def admin_command(application: Application):
     )
     application.add_handler(MessageHandler(None, admin.unban.init_reply))
     application.add_handler(MessageHandler(None, admin.check_permission.init))
+    application.add_handler(MessageHandler(None, admin.delete.init))
     application.add_handler(MessageHandler(None, admin.warn.init_reply))
     application.add_handler(MessageHandler(None, admin.warn.set_max_warn))
     application.add_handler(MessageHandler(None, admin.antiflood.set_antiflood))
@@ -42,13 +43,12 @@ def admin_command(application: Application):
     application.add_handler(
         MessageHandler(None, admin.set_welcome_buttons.add_button_status)
     )
-    application.add_handler(MessageHandler(None, admin.info_group.init))
     application.add_handler(MessageHandler(None, admin.info_group.chat_id))
     application.add_handler(MessageHandler(None, admin.pin.init))
     application.add_handler(MessageHandler(None, admin.pin.get_pinned))
     application.add_handler(MessageHandler(None, admin.pin.unpin))
 
-#Ow
+
 def owner_command(application: Application):
     application.add_handler(MessageHandler(None, owner.test.command_test))
     application.add_handler(MessageHandler(None, owner.server.init))
