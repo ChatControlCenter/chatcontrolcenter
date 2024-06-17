@@ -4,9 +4,9 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.menu import build_menu
 from core.utilities.message import message
@@ -16,6 +16,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.command(["help"]))
+@set_handler_update(MessageHandler)
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     bot = context.bot
     buttons = [
@@ -28,10 +29,10 @@ async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
         ),
         InlineKeyboardButton("🔔 Logs Channel", url="https://t.me/chatcontrolcenter_logs"),
         InlineKeyboardButton("📣 News Channel", url="https://t.me/chatcontrolcenternews"),
-        #TODO Create Page Blacklist
-        #InlineKeyboardButton(
-            #text="🚷 BlackList", url="https://squirrel-network.online/knowhere"
-        #),
+        # TODO Create Page Blacklist
+        # InlineKeyboardButton(
+            # text="🚷 BlackList", url="https://squirrel-network.online/knowhere"
+        # ),
         InlineKeyboardButton(
             text="📑 API Docs",
             url="https://api.chatcontrolcenter.it",

@@ -6,11 +6,11 @@
 import time
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from config import Session
 from core.database.models import GroupWelcomeButtons
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.functions import get_welcome_buttons
@@ -20,6 +20,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^welcome\|buttons\|del\|\d\|\d$")
 async def del_welcome_buttons(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -45,6 +46,7 @@ async def del_welcome_buttons(
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^welcome\|buttons\|del\|confim\|\d\|\d$")
 async def del_welcome_buttons_confirm(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -67,6 +69,7 @@ async def del_welcome_buttons_confirm(
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^welcome\|buttons\|add\|\d\|\d$")
 async def add_welcome_buttons(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):

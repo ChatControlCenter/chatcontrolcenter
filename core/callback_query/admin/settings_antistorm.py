@@ -4,10 +4,10 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from core.database.models import GroupSettings
-from core.decorators import check_settings, on_update
+from core.decorators import check_settings, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.telegram_update import TelegramUpdate
@@ -37,6 +37,7 @@ async def get_keyboard(update: TelegramUpdate) -> InlineKeyboardMarkup:
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^settings\|antistorm$")
 @check_settings
 async def settings_antistorm(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
@@ -50,6 +51,7 @@ async def settings_antistorm(
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^settings\|antistorm\|state$")
 @check_settings
 async def settings_antistorm_state_cb(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE

@@ -6,11 +6,11 @@
 import time
 
 from telegram.constants import ChatMemberStatus
-from telegram.ext import ApplicationHandlerStop, ContextTypes
+from telegram.ext import ApplicationHandlerStop, ContextTypes, ChatMemberHandler
 
 from config import Session
 from core.database.models import Groups
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.telegram_update import TelegramUpdate
@@ -40,6 +40,7 @@ async def is_storm(chat_id: int) -> bool:
 
 
 @on_update(True, ~filters.check_role(Role.OWNER, Role.ADMINISTRATOR, Role.CREATOR))
+@set_handler_update(ChatMemberHandler, ChatMemberHandler.CHAT_MEMBER)
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     if not (
         update.chat_member.new_chat_member.status == ChatMemberStatus.MEMBER

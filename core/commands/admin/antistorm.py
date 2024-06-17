@@ -4,10 +4,10 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from core.database.models import Groups
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.menu import build_menu
@@ -22,6 +22,7 @@ from languages import get_lang
     & filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR)
     & filters.group
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_antistorm(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)

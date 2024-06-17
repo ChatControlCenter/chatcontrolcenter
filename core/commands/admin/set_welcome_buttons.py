@@ -3,11 +3,11 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from config import Session
 from core.database.models import GroupWelcomeButtons
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import constants, filters
 from core.utilities.enums import Role
 from core.utilities.functions import get_welcome_buttons
@@ -23,6 +23,7 @@ from languages import get_lang
     & ~filters.reply
     & filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR)
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_welcome_buttons(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
@@ -44,6 +45,7 @@ async def set_welcome_buttons(
     & filters.check_status("add_welcome_buttons")
     & filters.text
 )
+@set_handler_update(MessageHandler)
 async def add_button_status(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     text = [x.strip() for x in update.effective_message.text.split("-")]

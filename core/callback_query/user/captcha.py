@@ -4,11 +4,11 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from config import Session
 from core.database.models import Groups
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.handlers.chat_handlers.welcome import welcome_user
 from core.utilities.functions import unmute_user
 from core.utilities.message import message
@@ -20,6 +20,7 @@ MAX_MISTAKES = 3
 
 
 @on_update()
+@set_handler_update(CallbackQueryHandler, r"^captcha\|\d+\|\d\|\d\|\d+$")
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     _, position, mistakes, tot_correct, user_id = update.callback_query.data.split("|")

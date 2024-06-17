@@ -6,10 +6,10 @@
 import datetime
 
 from telegram import constants
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from core.database.models import SuperbanTable, WhitelistTable
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.logs import sys_loggers, telegram_loggers
@@ -20,6 +20,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.check_role(Role.OWNER))
+@set_handler_update(CallbackQueryHandler, r"^superban\|")
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     query = update.callback_query

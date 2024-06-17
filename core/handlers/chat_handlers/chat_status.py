@@ -5,11 +5,11 @@
 
 import html
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler, ChatMemberHandler
 
 from config import Session
 from core.database.models import Groups, NebulaUpdates
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.functions import save_group
 from core.utilities.logs import telegram_debug_channel
@@ -18,6 +18,7 @@ from core.utilities.telegram_update import TelegramUpdate
 
 # This feature changes the chat title on the database when it is changed
 @on_update(True, filters.new_chat_title & filters.group)
+@set_handler_update(MessageHandler)
 async def new_chat_title_handler(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -33,6 +34,7 @@ async def new_chat_title_handler(
 
 # When a chat room changes group image it is saved to the webserver like this: example.com/group_photo/-100123456789.jpg (url variable)
 @on_update(True, filters.new_chat_photo & filters.group)
+@set_handler_update(MessageHandler)
 async def new_chat_photo_handler(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -54,6 +56,7 @@ async def new_chat_photo_handler(
 
 # This function change data into Groups table
 @on_update(True, filters.group)
+@set_handler_update(ChatMemberHandler, ChatMemberHandler.ANY_CHAT_MEMBER)
 async def change_group_info(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     chat = update.effective_chat
     group_members_count = await chat.get_member_count()
@@ -68,6 +71,7 @@ async def change_group_info(update: TelegramUpdate, context: ContextTypes.DEFAUL
 
 # this function has the task of saving in the database the updates for the calculation of messages
 @on_update(True, filters.group & ~filters.service & filters.user)
+@set_handler_update(MessageHandler)
 async def check_updates(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     chat = update.effective_chat

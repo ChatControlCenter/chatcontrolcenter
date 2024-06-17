@@ -4,11 +4,11 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from config import Session
 from core.database.models import OwnerList
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.message import message
@@ -18,6 +18,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.command(["owner"]) & filters.check_role(Role.OWNER))
+@set_handler_update(MessageHandler)
 @delete_command
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)

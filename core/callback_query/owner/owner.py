@@ -4,10 +4,10 @@
 # Copyright ChatControlCenter Team
 
 from telegram import constants
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from core.database.models import OwnerList
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.telegram_update import TelegramUpdate
@@ -16,6 +16,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.check_role(Role.OWNER))
+@set_handler_update(CallbackQueryHandler, r"^owner\|remove$")
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     user = update.callback_query.message.reply_to_message.from_user
     lang = await get_lang(update)

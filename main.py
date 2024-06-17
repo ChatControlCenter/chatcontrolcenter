@@ -15,13 +15,11 @@ from telegram.ext._application import DEFAULT_GROUP
 from tortoise import run_async
 
 from config import Config, Session
-from core.callback_query import callback_query_index
-from core.commands import commands_index
 from core.database import init_db
 from core.database.models import OwnerList, WhitelistTable
-from core.handlers import handlers_index
 from core.utilities.functions import get_owner_list
 from core.utilities.scheduler import start_scheduler
+from core.utilities.loader import load_plugins
 from core.webapp import routes
 from languages import load_languages
 
@@ -32,6 +30,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 10:
     )
     quit(1)
 
+PLUGINS_PATHS = ["callback_query", "commands", "handlers"]
 FMT = (
     "<green>[{time}]</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:"
     "<cyan>{line}</cyan> - <level>{message}</level>"
@@ -115,24 +114,11 @@ async def main() -> None:
     application = Application.builder().token(conf.BOT_TOKEN).build()
     Session.bot = application.bot
 
-    # on different commands - answer in Telegram
-    commands_index.user_command(application)
-    commands_index.admin_command(application)
-    commands_index.owner_command(application)
-
-    # Callback Query Handlers
-    callback_query_index.user_callback(application)
-    callback_query_index.admin_callback(application)
-    callback_query_index.owner_callback(application)
-
-    # Handlers
-    handlers_index.core_handlers(application)
+    load_plugins(application, PLUGINS_PATHS)
 
     await separate_handlers(application)
 
-    #################################
-    ########## WEBAPP ##############
-    ################################
+    # Webapp
     app = Quart(
         __name__,
         template_folder="core/webapp/templates",

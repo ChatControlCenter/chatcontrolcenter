@@ -14,13 +14,14 @@ from telegram.ext import ContextTypes
 from tortoise.exceptions import BaseORMException
 
 from config import Session
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities.logs import StringLog, telegram_debug_channel
 from core.utilities.telegram_update import TelegramUpdate
 from core.utilities.text import Text
 
 
 @on_update(True)
+@set_handler_update("ErrorHandler")
 @logger.catch
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     error = ""

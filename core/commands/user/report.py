@@ -5,10 +5,10 @@
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from config import Session
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.logs import StringLog, telegram_loggers
 from core.utilities.message import message
@@ -21,6 +21,7 @@ from languages import get_lang
     filters=filters.command(["report"])
     | filters.command(["admin"], "@") & filters.group
 )
+@set_handler_update(MessageHandler)
 async def report(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
 

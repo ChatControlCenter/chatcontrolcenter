@@ -3,10 +3,10 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from core.database.models import Groups
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.message import message
@@ -20,6 +20,7 @@ from languages import get_lang
     & ~filters.reply
     & filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR)
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_welcome(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
@@ -39,6 +40,7 @@ async def set_welcome(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
     & filters.reply_text
     & filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR)
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_welcome_reply(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)

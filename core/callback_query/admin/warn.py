@@ -4,10 +4,10 @@
 # Copyright ChatControlCenter Team
 
 from telegram.constants import ParseMode
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
-from core.database.models import Groups, GroupUsers
-from core.decorators import on_update
+from core.database.models import GroupUsers, Groups
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.telegram_update import TelegramUpdate
@@ -16,6 +16,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^warn\|down$")
 async def warn_down(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     query = update.callback_query
@@ -38,6 +39,7 @@ async def warn_down(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^warn\|up$")
 async def warn_up(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     query = update.callback_query
@@ -61,6 +63,7 @@ async def warn_up(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^warn\|remove$")
 async def warn_del(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     query = update.callback_query
@@ -76,6 +79,7 @@ async def warn_del(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^warn\|set\|(\d+)$")
 async def set_max_warn_cb(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     value = update.callback_query.data.split("|")[2]

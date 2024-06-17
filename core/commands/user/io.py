@@ -3,10 +3,10 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from core.database.models import SuperbanTable
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.message import message
 from core.utilities.telegram_update import TelegramUpdate
@@ -15,6 +15,7 @@ from languages import get_lang
 
 
 @on_update(filters=filters.command(["io"]) & filters.private)
+@set_handler_update(MessageHandler)
 @delete_command
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)

@@ -6,11 +6,11 @@
 import datetime
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from config import Session
 from core.database.models import SuperbanTable, Users, WhitelistTable
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.logs import sys_loggers, telegram_loggers
@@ -75,6 +75,7 @@ async def new_superban(
 
 
 @on_update(filters=filters.command(["bl"]) & filters.check_role(Role.OWNER))
+@set_handler_update(MessageHandler)
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
 
@@ -186,6 +187,7 @@ async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
 
 
 @on_update(filters=filters.command(["ubl"]) & filters.check_role(Role.OWNER))
+@set_handler_update(MessageHandler)
 async def remove_superban_via_id(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -210,6 +212,7 @@ async def remove_superban_via_id(
 
 
 @on_update(filters=filters.command(["mbl"]) & filters.check_role(Role.OWNER))
+@set_handler_update(MessageHandler)
 async def multi_superban(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     motivation = "MultiSuperban"

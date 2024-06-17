@@ -5,9 +5,9 @@
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
-from core.decorators import check_settings, on_update
+from core.decorators import check_settings, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.constants import SETTING_BUTTONS
 from core.utilities.enums import Role
@@ -16,6 +16,7 @@ from core.utilities.text import Text
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^settings$")
 @check_settings
 async def settings(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await update.lang
@@ -54,6 +55,7 @@ async def settings(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^settings\|modern$")
 @check_settings
 async def settings_modern(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.answer("Work in progress!")

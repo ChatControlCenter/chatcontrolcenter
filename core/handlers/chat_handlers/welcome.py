@@ -7,7 +7,7 @@ import itertools
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, User
 from telegram.constants import ChatMemberStatus
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, ChatMemberHandler
 
 from config import Session
 from core.database.models import (
@@ -16,7 +16,7 @@ from core.database.models import (
     SuperbanTable,
     GroupSettings,
 )
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities.captcha import get_catcha
 from core.utilities.constants import CUSTOM_BUTTONS_WELCOME
 from core.utilities.functions import (
@@ -61,6 +61,7 @@ async def is_in_blacklist(user_id: int) -> bool:
 
 
 @on_update(True)
+@set_handler_update(ChatMemberHandler, ChatMemberHandler.MY_CHAT_MEMBER)
 async def welcome_bot(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     if not update.my_chat_member.new_chat_member.status == ChatMemberStatus.MEMBER:
         return
@@ -144,6 +145,7 @@ async def welcome_user(
 
 
 @on_update(True)
+@set_handler_update(ChatMemberHandler, ChatMemberHandler.CHAT_MEMBER)
 async def new_member(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     if not (
         update.chat_member.new_chat_member.status == ChatMemberStatus.MEMBER

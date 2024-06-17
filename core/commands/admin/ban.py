@@ -5,10 +5,10 @@
 
 from telegram.constants import ChatMemberStatus
 from telegram.error import BadRequest
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from core.database.models import Groups, Users
-from core.decorators import delete_command, on_update
+from core.decorators import delete_command, on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.logs import StringLog, sys_loggers, telegram_loggers
@@ -80,6 +80,7 @@ async def ban_user_from_id(
     & filters.reply
     & filters.group
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def init_reply(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_message.reply_to_message.from_user
@@ -100,6 +101,7 @@ async def init_reply(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE)
     & ~filters.reply
     & filters.group
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
@@ -134,6 +136,7 @@ async def init(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     & ~filters.reply
     & filters.group
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_ban_message(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
@@ -153,6 +156,7 @@ async def set_ban_message(update: TelegramUpdate, context: ContextTypes.DEFAULT_
     & filters.reply_text
     & filters.group
 )
+@set_handler_update(MessageHandler)
 @delete_command
 async def set_ban_message_reply(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE

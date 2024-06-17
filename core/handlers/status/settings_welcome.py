@@ -3,11 +3,11 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from config import Session
 from core.database.models import Groups
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.functions import validate_html
@@ -24,7 +24,7 @@ from core.utilities.text import Text
     & filters.check_status("set_welcome_text")
     & filters.text,
 )
-#Set Welcome
+@set_handler_update(MessageHandler)
 async def set_welcome_text_status(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):

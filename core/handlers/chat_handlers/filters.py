@@ -3,10 +3,10 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 
 from core.database.models import GroupsFilters
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.message import message
@@ -48,6 +48,7 @@ DOCUMENT_DATA = (
     & filters.document
     & ~filters.check_role(Role.ADMINISTRATOR, Role.CREATOR, Role.OWNER),
 )
+@set_handler_update(MessageHandler)
 async def filters_chat(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     mime_type = update.effective_message.document.mime_type

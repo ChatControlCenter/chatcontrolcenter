@@ -43,4 +43,4 @@ async def init_db():
             "timezone": "Europe/Rome",
         }
     )
-    await Tortoise.generate_schemas()
+    await Tortoise.generate_schemas(True)

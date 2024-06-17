@@ -3,11 +3,11 @@
 
 # Copyright ChatControlCenter Team
 
-from telegram.ext import ContextTypes
+from telegram.ext import ContextTypes, MessageHandler
 from telegram.constants import MessageEntityType
 
 from core.database.models import Groups, GroupUsers, SuperbanTable, GroupSettings
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.functions import (
@@ -39,6 +39,7 @@ NO_USERNAME_ACTION = {
     & filters.user
     & ~filters.users({777000}),
 )
+@set_handler_update(MessageHandler)
 async def status(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     user = update.effective_user

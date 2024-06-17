@@ -4,10 +4,10 @@
 # Copyright ChatControlCenter Team
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackQueryHandler, ContextTypes
 
 from core.database.models import Groups
-from core.decorators import on_update
+from core.decorators import on_update, set_handler_update
 from core.utilities import filters
 from core.utilities.enums import Role
 from core.utilities.telegram_update import TelegramUpdate
@@ -18,6 +18,7 @@ MAX_MESSAGES = 10
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^antiflood\|set\|(messages|seconds)\|minus$")
 async def set_antiflood_minus_cb(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -49,6 +50,7 @@ async def set_antiflood_minus_cb(
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^antiflood\|set\|(messages|seconds)\|plus$")
 async def set_antiflood_plus_cb(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
@@ -80,6 +82,7 @@ async def set_antiflood_plus_cb(
 
 
 @on_update(filters=filters.check_role(Role.OWNER, Role.CREATOR, Role.ADMINISTRATOR))
+@set_handler_update(CallbackQueryHandler, r"^antiflood\|success$")
 async def set_antiflood_success(
     update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE
 ):
