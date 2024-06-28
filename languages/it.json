@@ -111,6 +111,7 @@
     "WELCOME_CAPTCHA_NOT_VALID": "Captcha non valido",
     "WELCOME_CAPTCHA_CLEANUP": "@{USERNAME} il captcha non è più valido",
     "BAN_ERROR_NO_ID": "Inserisci un id o un username valido\nEsempio: /ban id",
+    "SOURCE_BOT": "Codice sorgente del bot\nSe vuoi contribuire o mettere una stella premi il pulsante qui sotto",
     "SETTINGS": {
         "SETTINGS_MODE_SELECTION": "Segli la modalità per aprire le impostazioni {HAMMER_AND_WRENCH}",
         "SETTINGS_MAIN_TEXT": "{GEAR} Impostazioni del bot\n\n{SCROLL} Nome del gruppo: <i>{NAME}</i>\n{LABEL} ChatId: <code>{ID}</code>",

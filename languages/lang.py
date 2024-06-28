@@ -156,6 +156,7 @@ class Lang(typing.TypedDict):
     SETTINGS_WELCOME: str
     SETTINGS_WELCOME_TEXT: str
     SETTINGS: SettingsTexts
+    SOURCE_BOT: str
 
 
 class SettingsMainButtonTexts(typing.TypedDict):
