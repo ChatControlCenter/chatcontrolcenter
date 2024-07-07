@@ -128,6 +128,7 @@ async def main() -> None:
     app.register_blueprint(routes.filters)
     app.register_blueprint(routes.home)
     app.register_blueprint(routes.user_commands)
+    app.register_blueprint(routes.privacy)
 
     # Scheduler
     start_scheduler()
