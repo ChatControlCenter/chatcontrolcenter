@@ -48,7 +48,8 @@ SETTING_BUTTON = (
 async def init_reply(update: TelegramUpdate, context: ContextTypes.DEFAULT_TYPE):
     lang = await get_lang(update)
     reply = update.effective_message.reply_to_message.from_user
-    reason = v[1] if len(v := update.effective_message.text.split()) > 1 else None
+    v = update.effective_message.text.split(maxsplit=1)
+    reason = v[1] if len(v) > 1 else None
 
     data = await Groups.get(id_group=update.effective_chat.id)
     user = await GroupUsers.get(tg_id=reply.id, tg_group_id=update.effective_chat.id)
