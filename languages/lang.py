@@ -157,6 +157,10 @@ class Lang(typing.TypedDict):
     SETTINGS_WELCOME_TEXT: str
     SETTINGS: SettingsTexts
     SOURCE_BOT: str
+    BADWORD_ERROR_EXIST: str
+    BADWORD_DUPLICATE: str
+    BADWORD_ERROR: str
+    BADWORD_SUCCESS: str
 
 
 class SettingsMainButtonTexts(typing.TypedDict):

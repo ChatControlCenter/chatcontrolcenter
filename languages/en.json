@@ -112,6 +112,10 @@
     "WELCOME_CAPTCHA_CLEANUP": "@{USERNAME} the captcha is no longer valid",
     "BAN_ERROR_NO_ID": "Please enter a valid id or username\nExample: /ban id",
     "SOURCE_BOT": "Bot source code\nIf you want to contribute or put a star, press the button below",
+    "BADWORD_ERROR_EXIST": "Please, specify a badword to add.",
+    "BADWORD_DUPLICATE": "The badword already exists for this group.",
+    "BADWORD_ERROR": "An error occurred while saving of the badword.",
+    "BADWORD_SUCCESS": "Badword added successfully!",
     "SETTINGS": {
         "SETTINGS_MODE_SELECTION": "Choose the method to access the settings {HAMMER_AND_WRENCH}",
         "SETTINGS_MAIN_TEXT": "{GEAR} Bot settings\n\n{SCROLL} Group Name: <i>{NAME}</i>\n{LABEL} ChatId: <code>{ID}</code>",

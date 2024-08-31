@@ -9,7 +9,7 @@ import time
 
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, Update, User
 from telegram.ext import ContextTypes
-from tortoise.exceptions import ValidationError
+from tortoise.exceptions import ValidationError, IntegrityError
 
 from config import Session
 from core.database.models import (
@@ -152,7 +152,7 @@ async def check_group_badwords(update: Update) -> bool:
 
 
 async def mute_user_by_id_time(
-    chat_id: int, user_id: int, context: ContextTypes.DEFAULT_TYPE, mute_time=30
+        chat_id: int, user_id: int, context: ContextTypes.DEFAULT_TYPE, mute_time=30
 ):
     await context.bot.restrict_chat_member(
         chat_id, user_id, PERM_FALSE, until_date=int(time.time() + mute_time)
@@ -171,7 +171,7 @@ def validate_html(msg: str) -> bool:
             next_chr_index = i + 1
 
             if msg[next_chr_index] == "/":
-                cur_tag = msg[(next_chr_index + 1) : close_tkn_index]
+                cur_tag = msg[(next_chr_index + 1): close_tkn_index]
 
                 if tags and cur_tag == tags[-1]:
                     tags.pop()
@@ -184,7 +184,7 @@ def validate_html(msg: str) -> bool:
                     return False
 
                 if " " in new_tag:
-                    new_tag = new_tag[0 : new_tag.index(" ")]
+                    new_tag = new_tag[0: new_tag.index(" ")]
 
                 tags.append(new_tag)
 
@@ -205,3 +205,20 @@ async def update_filters(chat_id, filters_selected):
 
     # Salva le modifiche nel database
     await filters_record.save()
+
+
+async def save_badword(chat_id, badword):
+    # Controlliamo se esiste già la badword per il gruppo specifico
+    existing_badword = await GroupsBadwords.filter(word=badword, tg_group_id=chat_id).first()
+
+    if existing_badword:
+        # Badword già esistente, possiamo restituire un messaggio o loggare
+        return "La badword esiste già per questo gruppo."
+
+    # Se non esiste, salviamo la nuova badword
+    try:
+        await GroupsBadwords.create(word=badword, tg_group_id=chat_id)
+        return "Badword salvata con successo."
+    except IntegrityError as e:
+        print(f"Errore di integrità: {e}")
+        return "Errore durante il salvataggio della badword."
